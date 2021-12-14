@@ -32,6 +32,40 @@ class MyClass {
 };
 
 // Put your code here.
+class Value : public MyClass {
+private:
+    double i;
+    std::string str;
+public:
+    Value(double i2);
+    Value(std::string s);
+    Value(const MyClass &mc);
+    Value(std::pair<int, std::string> p);
+    ~Value(){};
+    Value &operator=(Value v){
+        i = v.i;
+        str = v.str;
+        return *this;
+    };
+};
+
+Value::Value(double i2) : MyClass(i2, std::string("")){
+    i = i2;
+};
+
+Value::Value(std::string s) : MyClass(0, s){
+    str = s;
+};
+
+Value::Value(const MyClass &mc) : MyClass(mc){
+    i = mc.i;
+    str = mc.s;
+};
+
+Value::Value(std::pair<int, std::string> p) : MyClass(p.first, p.second){
+    i = p.first;
+    str = p.second;
+};
 
 int
 main() {
