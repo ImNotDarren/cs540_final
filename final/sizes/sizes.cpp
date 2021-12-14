@@ -26,6 +26,28 @@ type_info_to_string(const std::type_info &ti) {
 }
 
 // Put your code here.
+typedef struct output {
+    std::string name;
+    int size;
+}output;
+
+template <typename T, typename ...F> void add(std::vector<output> *vec, T &t,  F &...f){
+    std::type_info info(T);
+    output tmp;
+    tmp.name = type_info_to_string(info);
+    tmp.size = sizeof(t);
+    vec->push_back(tmp);
+    return add(vec, f...);
+};
+
+template <typename ...T> std::vector<output> get_sizes(T ...t){
+    std::vector<output> *vec;
+    add<T...>(vec, t...);
+    
+    return *vec;
+};
+
+
 
 int main() {
     struct Foo { int i; double x; };
