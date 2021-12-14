@@ -1,0 +1,6 @@
+type name: int, size: 4
+type name: double, size: 8
+type name: main::Foo, size: 16
+type name: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, size: 32
+type name: std::__cxx11::list<int, std::allocator<int> >, size: 24
+type name: std::vector<int, std::allocator<int> >, size: 24
